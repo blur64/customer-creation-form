@@ -107,14 +107,17 @@
 import { useVuelidate } from "@vuelidate/core";
 import { helpers, required } from "@vuelidate/validators";
 import { startsWith, equalsLength } from "./customValidators";
+import BaseInput from "./components/BaseInput";
 
 export default {
   name: "App",
+  components: { BaseInput },
   setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
+      foo: "FOO WORD",
       main: {
         surname: "",
         name: "",
