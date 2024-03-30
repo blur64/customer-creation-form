@@ -2,10 +2,7 @@
   <div class="container">
     <form @submit="handleFormSubmit">
       <h1>Форма создания клиента</h1>
-
-      <fieldset>
-        <legend><h2>Основная информация</h2></legend>
-
+      <form-section :title="'Основная информация'">
         <label for="surname">Фамилия</label>
         <input v-model="main.surname" id="surname" type="text" />
         <p>{{ allErrorsAsSingleStringMap.surname }}</p>
@@ -52,10 +49,8 @@
           type="checkbox"
         />
         <label for="is-not-send-texting">Не отправлять СМС</label>
-      </fieldset>
-      <fieldset>
-        <legend><h2>Адрес</h2></legend>
-
+      </form-section>
+      <form-section :title="'Адрес'">
         <label for="city">Город</label>
         <input v-model="address.city" id="city" type="text" />
         <p>{{ allErrorsAsSingleStringMap.city }}</p>
@@ -74,10 +69,8 @@
 
         <label for="street">Улица</label>
         <input v-model="address.street" id="street" type="text" />
-      </fieldset>
-      <fieldset>
-        <legend><h2>Паспортные данные</h2></legend>
-
+      </form-section>
+      <form-section :title="'Паспортные данные'">
         <label for="document-type">Тип документа</label>
         <select v-model="docs.type" id="document-type">
           <option value="0">Паспорт</option>
@@ -98,7 +91,7 @@
         <label for="document-issue-date">Дата выдачи</label>
         <input v-model="docs.issueDate" id="document-issue-date" type="date" />
         <p>{{ allErrorsAsSingleStringMap.issueDate }}</p>
-      </fieldset>
+      </form-section>
       <button type="submit">Сохранить</button>
     </form>
   </div>
