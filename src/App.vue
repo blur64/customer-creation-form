@@ -7,15 +7,18 @@
 
         <label for="surname">Фамилия</label>
         <input v-model="main.surname" id="surname" type="text" />
+        <p>{{ allErrorsAsSingleStringMap.surname }}</p>
 
         <label for="name">Имя</label>
         <input v-model="main.name" id="name" type="text" />
+        <p>{{ allErrorsAsSingleStringMap.name }}</p>
 
         <label for="patronymic">Отчество</label>
         <input v-model="main.patronymic" id="patronymic" type="text" />
 
         <label for="birth-date">Дата рождения</label>
         <input v-model="main.birthDate" id="birth-date" type="date" />
+        <p>{{ allErrorsAsSingleStringMap.birthDate }}</p>
 
         <label for="sex">Пол</label>
         <select v-model="main.sex" id="sex">
@@ -25,6 +28,7 @@
 
         <label for="phone-number">Номер телефона</label>
         <input v-model="main.phoneNumber" id="phone-number" type="tel" />
+        <p>{{ allErrorsAsSingleStringMap.phoneNumber }}</p>
 
         <label for="assigned-doctor">Лечащий врач</label>
         <select v-model="main.assignedDoctor" id="assigned-doctor">
@@ -39,6 +43,7 @@
           <option value="1">Проблемные</option>
           <option value="2">ОМС</option>
         </select>
+        <p>{{ allErrorsAsSingleStringMap.clientsGroup }}</p>
 
         <input
           v-model="main.isNotSendTexting"
@@ -52,6 +57,7 @@
 
         <label for="city">Город</label>
         <input v-model="address.city" id="city" type="text" />
+        <p>{{ allErrorsAsSingleStringMap.city }}</p>
 
         <label for="country">Страна</label>
         <input v-model="address.country" id="country" type="text" />
@@ -77,6 +83,7 @@
           <option value="1">Свидетельство о рождении</option>
           <option value="2">Вод. удостоверение</option>
         </select>
+        <p>{{ allErrorsAsSingleStringMap.type }}</p>
 
         <label for="document-series">Серия</label>
         <input v-model="docs.series" id="document-series" type="number" />
@@ -89,6 +96,7 @@
 
         <label for="document-issue-date">Дата выдачи</label>
         <input v-model="docs.issueDate" id="document-issue-date" type="date" />
+        <p>{{ allErrorsAsSingleStringMap.issueDate }}</p>
       </fieldset>
       <button type="submit">Сохранить</button>
     </form>
@@ -133,6 +141,7 @@ export default {
         issuer: "",
         issueDate: new Date(0),
       },
+      allErrorsAsSingleStringMap: {},
     };
   },
   validations() {
@@ -168,8 +177,21 @@ export default {
               .map((err) => `${err.$property}: ${err.$message}`)
               .join("\n")
           );
+          this.setErrorsMap();
         }
       });
+    },
+    setErrorsMap() {
+      const newErrorsMap = {};
+      this.v$.$errors.forEach((errObj) => {
+        const currentProp = errObj.$property;
+        if (currentProp in newErrorsMap) {
+          newErrorsMap[currentProp] += errObj.$message;
+        } else {
+          newErrorsMap[currentProp] = errObj.$message;
+        }
+      });
+      this.allErrorsAsSingleStringMap = newErrorsMap;
     },
   },
 };
@@ -186,4 +208,7 @@ input, select
 
 label
   margin-right: 4px
+
+p
+  color: red
 </style>
