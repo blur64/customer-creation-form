@@ -1,10 +1,11 @@
 <template>
   <div>
-    <label v-if="label" :for="$attrs.id">{{ label }}</label>
+    <label v-if="label" :for="id">{{ label }}</label>
     <select
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
+      :id="id"
     >
       <option v-for="(opt, idx) of options" :key="idx" :value="opt.value">
         {{ opt.text }}
@@ -30,6 +31,7 @@ export default {
         return [];
       },
     },
+    id: String,
     options: {
       type: Array,
       validator(value) {

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <label v-if="label" :for="$attrs.id">{{ label }}</label>
+    <label v-if="label" :for="id">{{ label }}</label>
     <input
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
+      :id="id"
     />
     <div v-if="errors.length">{{ errors.join(". ") }}</div>
   </div>
@@ -26,6 +27,7 @@ export default {
         return [];
       },
     },
+    id: String,
   },
 };
 </script>
