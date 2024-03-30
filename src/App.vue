@@ -2,6 +2,7 @@
   <div class="container">
     <form @submit="handleFormSubmit">
       <h1>Форма создания клиента</h1>
+
       <fieldset>
         <legend><h2>Основная информация</h2></legend>
 
@@ -109,10 +110,11 @@ import { helpers, required } from "@vuelidate/validators";
 import { startsWith, equalsLength } from "./customValidators";
 import BaseInput from "./components/BaseInput";
 import BaseSelect from "./components/BaseSelect";
+import FormSection from "./components/FormSection";
 
 export default {
   name: "App",
-  components: { BaseInput, BaseSelect },
+  components: { BaseInput, BaseSelect, FormSection },
   setup() {
     return { v$: useVuelidate() };
   },
