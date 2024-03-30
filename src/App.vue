@@ -97,6 +97,9 @@
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
+import { minLength, maxLength, required } from "@vuelidate/validators";
+
+// todo: write validators: equalsLength, startsWith
 
 export default {
   name: "App",
@@ -134,11 +137,40 @@ export default {
     };
   },
   validations() {
-    return {};
+    return {
+      main: {
+        surname: { required },
+        name: { required },
+        birthDate: { required },
+        phoneNumber: {
+          required,
+          minLength: minLength(11),
+          maxLength: maxLength(11),
+        },
+        clientsGroup: { required },
+      },
+      address: {
+        city: { required },
+      },
+      docs: {
+        type: { required },
+        issueDate: { required },
+      },
+    };
   },
   methods: {
     handleFormSubmit(e) {
-      e.preventDefault();
+      this.v$.$validate().then((isFormValid) => {
+        if (!isFormValid) {
+          e.preventDefault();
+          console.log("Errors:");
+          console.log(
+            this.v$.$errors
+              .map((err) => `${err.$property}: ${err.$message}`)
+              .join("\n")
+          );
+        }
+      });
     },
   },
 };
