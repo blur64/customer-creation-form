@@ -97,9 +97,8 @@
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
-import { minLength, maxLength, required } from "@vuelidate/validators";
-
-// todo: write validators: equalsLength, startsWith
+import { required } from "@vuelidate/validators";
+import { startsWith, equalsLength } from "./customValidators";
 
 export default {
   name: "App",
@@ -144,8 +143,8 @@ export default {
         birthDate: { required },
         phoneNumber: {
           required,
-          minLength: minLength(11),
-          maxLength: maxLength(11),
+          equalsLength: equalsLength(11),
+          startsWith: startsWith("7"),
         },
         clientsGroup: { required },
       },
