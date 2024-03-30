@@ -105,7 +105,7 @@
 
 <script>
 import { useVuelidate } from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { helpers, required } from "@vuelidate/validators";
 import { startsWith, equalsLength } from "./customValidators";
 
 export default {
@@ -147,22 +147,42 @@ export default {
   validations() {
     return {
       main: {
-        surname: { required },
-        name: { required },
-        birthDate: { required },
-        phoneNumber: {
-          required,
-          equalsLength: equalsLength(11),
-          startsWith: startsWith("7"),
+        surname: {
+          required: helpers.withMessage("Это обязательное поле", required),
         },
-        clientsGroup: { required },
+        name: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
+        birthDate: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
+        phoneNumber: {
+          required: helpers.withMessage("Это обязательное поле", required),
+          equalsLength: helpers.withMessage(
+            "Длина поля должна быть равна 11",
+            equalsLength(11)
+          ),
+          startsWith: helpers.withMessage(
+            "Поле должно начинаться с 7",
+            startsWith("7")
+          ),
+        },
+        clientsGroup: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
       },
       address: {
-        city: { required },
+        city: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
       },
       docs: {
-        type: { required },
-        issueDate: { required },
+        type: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
+        issueDate: {
+          required: helpers.withMessage("Это обязательное поле", required),
+        },
       },
     };
   },
