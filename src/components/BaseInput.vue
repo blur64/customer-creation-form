@@ -1,12 +1,12 @@
 <template>
   <div>
-    <label :for="$attrs.id">{{ label }}</label>
+    <label v-if="label" :for="$attrs.id">{{ label }}</label>
     <input
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
     />
-    <div>{{ errors.join(". ") }}</div>
+    <div v-if="errors.length">{{ errors.join(". ") }}</div>
   </div>
 </template>
 
@@ -14,6 +14,18 @@
 export default {
   name: "BaseInput",
   inheritAttrs: false,
-  props: ["value", "label", "errors"],
+  props: {
+    value: {},
+    label: String,
+    errors: {
+      type: Array,
+      validator(value) {
+        return value.every((err) => typeof err === "string");
+      },
+      default() {
+        return [];
+      },
+    },
+  },
 };
 </script>
