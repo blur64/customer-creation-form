@@ -1,6 +1,6 @@
 <template>
   <form @submit="handleFormSubmit">
-    <h1>Форма создания клиента</h1>
+    <h1 class="form-title">Форма создания клиента</h1>
     <form-section :title="'Основная информация'">
       <base-input
         v-model="main.surname"
@@ -268,5 +268,10 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
+@import "../styles/variables"
+
+.form-title
+  font-weight: $fw-light
+  font-size: $fs-big
 </style>
