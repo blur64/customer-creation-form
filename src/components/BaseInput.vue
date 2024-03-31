@@ -21,6 +21,9 @@ export default {
     errors: {
       type: Array,
       validator(value) {
+        if (!value) {
+          return true;
+        }
         return value.every((err) => typeof err === "string");
       },
       default() {
