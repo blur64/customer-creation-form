@@ -152,12 +152,14 @@
 </template>
 
 <script>
-import { useVuelidate } from "@vuelidate/core";
-import { helpers, required } from "@vuelidate/validators";
-import { startsWith, equalsLength } from "../customValidators";
+// components
 import BaseInput from "./BaseInput";
 import BaseSelect from "./BaseSelect";
 import FormSection from "./FormSection";
+// validation
+import { useVuelidate } from "@vuelidate/core";
+import { helpers, required } from "@vuelidate/validators";
+import { startsWith, equalsLength } from "../customValidators";
 
 export default {
   name: "AppForm",

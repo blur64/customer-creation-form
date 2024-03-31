@@ -56,6 +56,9 @@ export default {
   &-with-error
     border: 1px solid $error
 
+  &[type="checkbox"]
+    width: initial
+
 .input-error
   color: $error
   font-size: $fs-small
