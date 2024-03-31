@@ -247,27 +247,22 @@ export default {
       this.v$.$validate().then((isFormValid) => {
         if (!isFormValid) {
           e.preventDefault();
-          console.log("Errors:");
-          console.log(
-            this.v$.$errors
-              .map((err) => `${err.$property}: ${err.$message}`)
-              .join("\n")
-          );
           this.setErrorsMap();
         }
       });
     },
     setErrorsMap() {
-      const newErrorsMap = {};
+      this.errorsMap = this.createErrorsMap();
+    },
+    createErrorsMap() {
+      const errorsMap = {};
       this.v$.$errors.forEach((errObj) => {
         const currentProp = errObj.$property;
-        if (currentProp in newErrorsMap) {
-          newErrorsMap[currentProp].push(errObj.$message);
-        } else {
-          newErrorsMap[currentProp] = [errObj.$message];
-        }
+        currentProp in errorsMap
+          ? errorsMap[currentProp].push(errObj.$message)
+          : (errorsMap[currentProp] = [errObj.$message]);
       });
-      this.errorsMap = newErrorsMap;
+      return errorsMap;
     },
   },
 };
