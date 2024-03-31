@@ -18,9 +18,14 @@ export default {
 
 html
   font-family: "Roboto", sans-serif
+  color: $text-main
+  font-weight: $fw-regular
 
 *
   box-sizing: border-box
+
+body
+  background-color: $background-secondary
 
 .container
   max-width: 792px

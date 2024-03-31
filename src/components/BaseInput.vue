@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <label v-if="label" :for="id">{{ label }}</label>
+  <div class="input-wrapper">
+    <label class="input-label" v-if="label" :for="id">{{ label }}</label>
     <input
+      class="input"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
@@ -34,3 +35,20 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@import "../styles/_variables"
+
+.input-label
+  font-size: $fs-small
+  color: $text-secondary
+
+.input
+  border: 1px solid $border-main
+  border-radius: $border-raduis-main
+  height: 36px
+  width: 100%
+  padding: 10px 8px
+  color: $text-main
+  font-weight: $fw-regular
+</style>
