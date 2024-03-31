@@ -1,5 +1,5 @@
 <template>
-  <form @submit="handleFormSubmit">
+  <form class="form" @submit="handleFormSubmit">
     <h1 class="form-title">Форма создания клиента</h1>
     <form-section :title="'Основная информация'">
       <div class="form-controls-wrapper">
@@ -42,7 +42,7 @@
             { value: '0', text: 'М' },
             { value: '1', text: 'Ж' },
           ]"
-          class="cols-1"
+          class="cols-1 sex-select"
         />
         <base-input
           v-model="main.phoneNumber"
@@ -178,7 +178,7 @@
         />
       </div>
     </form-section>
-    <button type="submit">Сохранить</button>
+    <base-button :text="'Сохранить'" type="submit" class="save-button" />
   </form>
 </template>
 
@@ -186,6 +186,7 @@
 // components
 import BaseInput from "./BaseInput";
 import BaseSelect from "./BaseSelect";
+import BaseButton from "./BaseButton";
 import FormSection from "./FormSection";
 // validation
 import { useVuelidate } from "@vuelidate/core";
@@ -194,7 +195,7 @@ import { startsWith, equalsLength } from "../customValidators";
 
 export default {
   name: "AppForm",
-  components: { BaseInput, BaseSelect, FormSection },
+  components: { BaseInput, BaseSelect, FormSection, BaseButton },
   setup() {
     return { v$: useVuelidate() };
   },
@@ -304,6 +305,9 @@ export default {
 <style lang="sass" scoped>
 @import "../styles/variables"
 
+.form
+  margin-bottom: 24px
+
 .form-title
   font-weight: $fw-light
   font-size: $fs-big
@@ -325,6 +329,26 @@ export default {
 .cols-1
   grid-column: 1 span
 
+.sex-select
+  min-width: 45px
+
 .texting-checkbox
   align-self: center
+
+.save-button
+  margin-top: 24px
+
+@media (max-width: 648px)
+  .form-controls-wrapper
+    grid-template-columns: repeat(8, 1fr)
+
+  .cols-9
+    grid-column: 8 span
+
+@media (max-width: 428px)
+  .form-controls-wrapper
+    grid-template-columns: repeat(4, 1fr)
+
+  .cols-9
+    grid-column: 4 span
 </style>
