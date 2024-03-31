@@ -14,17 +14,15 @@ export default {
 </script>
 
 <style lang="sass">
+@import "styles/variables"
+
+html
+  font-family: "Roboto", sans-serif
+
+*
+  box-sizing: border-box
+
 .container
   max-width: 792px
   margin: 0 auto
-
-input, select
-  margin-right: 12px
-  margin-bottom: 8px
-
-label
-  margin-right: 4px
-
-p
-  color: red
 </style>
