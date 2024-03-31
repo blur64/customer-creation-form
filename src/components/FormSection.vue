@@ -23,6 +23,7 @@ export default {
   background-color: $background-main
   margin: 0
   padding: 0 12px 12px 12px
+  margin-top: 8px
 
 .form-section-title
   font-weight: $fw-medium

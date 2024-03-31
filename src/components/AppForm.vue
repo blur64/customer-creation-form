@@ -311,6 +311,8 @@ export default {
 .form-title
   font-weight: $fw-light
   font-size: $fs-big
+  margin-top: 28px
+  margin-left: 14px
 
 .form-controls-wrapper
   display: grid
