@@ -47,7 +47,6 @@ export default {
 .input
   border: 1px solid $border-main
   border-radius: $border-raduis-main
-  height: 36px
   width: 100%
   padding: 10px 8px
   margin-top: 4px

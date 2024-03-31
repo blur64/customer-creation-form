@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <label v-if="label" :for="id">{{ label }}</label>
+  <div class="select-wrapper">
+    <label class="select-label" v-if="label" :for="id">{{ label }}</label>
     <select
+      class="select"
+      :class="{ 'select-with-error': errors.length }"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
@@ -11,7 +13,7 @@
         {{ opt.text }}
       </option>
     </select>
-    <div v-if="errors.length">{{ errors.join(". ") }}</div>
+    <div class="select-error" v-if="errors.length">{{ errors.join(". ") }}</div>
   </div>
 </template>
 
@@ -44,3 +46,28 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@import "../styles/_variables"
+
+.select-label
+  font-size: $fs-small
+  color: $text-secondary
+
+.select
+  border: 1px solid $border-main
+  border-radius: $border-raduis-main
+  width: 100%
+  padding: 10px 8px
+  margin-top: 4px
+  color: $text-main
+  font-weight: $fw-regular
+
+  &-with-error
+    border: 1px solid $error
+
+.select-error
+  color: $error
+  font-size: $fs-small
+  margin-top: 4px
+</style>
