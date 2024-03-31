@@ -3,12 +3,13 @@
     <label class="input-label" v-if="label" :for="id">{{ label }}</label>
     <input
       class="input"
+      :class="{ 'input-with-error': errors.length }"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
       :id="id"
     />
-    <div v-if="errors.length">{{ errors.join(". ") }}</div>
+    <div class="input-error" v-if="errors.length">{{ errors.join(". ") }}</div>
   </div>
 </template>
 
@@ -49,6 +50,15 @@ export default {
   height: 36px
   width: 100%
   padding: 10px 8px
+  margin-top: 4px
   color: $text-main
   font-weight: $fw-regular
+
+  &-with-error
+    border: 1px solid $error
+
+.input-error
+  color: $error
+  font-size: $fs-small
+  margin-top: 4px
 </style>
