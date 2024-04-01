@@ -7,6 +7,7 @@
         id="surname"
         type="text"
         label="Фамилия"
+        name="surname"
         :errors="errorsMap.surname"
         class="cols-4"
       />
@@ -15,6 +16,7 @@
         id="name"
         type="text"
         label="Имя"
+        name="name"
         :errors="errorsMap.name"
         class="cols-4"
       />
@@ -23,6 +25,7 @@
         id="patronymic"
         type="text"
         label="Отчество"
+        name="patronymic"
         class="cols-4"
       />
       <base-input
@@ -30,6 +33,7 @@
         id="birth-date"
         type="date"
         label="Дата рождения"
+        name="birth-date"
         :errors="errorsMap.birthDate"
         class="cols-3"
       />
@@ -37,6 +41,7 @@
         v-model="main.sex"
         id="sex"
         label="Пол"
+        name="sex"
         :options="[
           { value: '0', text: 'М' },
           { value: '1', text: 'Ж' },
@@ -48,6 +53,7 @@
         id="phone-number"
         type="tel"
         label="Номер телефона"
+        name="phone-number"
         :errors="errorsMap.phoneNumber"
         class="cols-4"
       />
@@ -55,6 +61,7 @@
         v-model="main.assignedDoctor"
         id="assigned-doctor"
         label="Лечащий врач"
+        name="assigned-doctor"
         :options="[
           { value: '0', text: 'Иванов' },
           { value: '1', text: 'Захаров' },
@@ -66,6 +73,7 @@
         v-model="main.clientsGroup"
         id="clents-group"
         label="Группа клиентов"
+        name="clents-group"
         :options="[
           { value: '0', text: 'VIP' },
           { value: '1', text: 'Проблемные' },
@@ -80,6 +88,7 @@
         id="is-not-send-texting"
         type="checkbox"
         label="Не отправлять СМС"
+        name="is-not-send-texting"
         :errors="errorsMap.isNotSendTexting"
         class="cols-4 texting-checkbox"
       />
@@ -90,6 +99,7 @@
         id="city"
         type="text"
         label="Город"
+        name="city"
         :errors="errorsMap.city"
         class="cols-4"
       />
@@ -98,12 +108,14 @@
         id="country"
         type="text"
         label="Страна"
+        name="country"
         class="cols-4"
       />
       <base-input
         v-model="address.region"
         id="region"
         label="Область"
+        name="region"
         type="text"
         class="cols-4"
       />
@@ -111,6 +123,7 @@
         v-model="address.postcode"
         id="postcode"
         label="Индекс"
+        name="postcode"
         type="text"
         class="cols-2"
       />
@@ -118,6 +131,7 @@
         v-model="address.house"
         id="house"
         label="Дом"
+        name="house"
         type="text"
         class="cols-2"
       />
@@ -125,6 +139,7 @@
         v-model="address.street"
         id="street"
         label="Улица"
+        name="street"
         type="text"
         class="cols-4"
       />
@@ -134,6 +149,7 @@
         v-model="docs.type"
         id="document-type"
         label="Тип документа"
+        name="document-type"
         :options="[
           { value: '0', text: 'Паспорт' },
           { value: '1', text: 'Свидетельство о рождении' },
@@ -146,6 +162,7 @@
         v-model="docs.series"
         id="document-series"
         label="Серия"
+        name="document-series"
         type="text"
         class="cols-4"
       />
@@ -153,6 +170,7 @@
         v-model="docs.number"
         id="document-number"
         label="Номер"
+        name="document-number"
         type="text"
         class="cols-4"
       />
@@ -160,6 +178,7 @@
         v-model="docs.issuer"
         id="document-issuer"
         label="Кем выдан"
+        name="document-issuer"
         type="text"
         class="cols-9"
       />
@@ -167,6 +186,7 @@
         v-model="docs.issueDate"
         id="document-issue-date"
         label="Дата выдачи"
+        name="document-issue-date"
         type="date"
         :errors="errorsMap.issueDate"
         class="cols-3"
