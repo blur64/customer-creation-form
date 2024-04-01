@@ -3,7 +3,9 @@
     <legend class="legend">
       <h2 class="form-section-title">{{ title }}</h2>
     </legend>
-    <slot></slot>
+    <div class="form-controls-wrapper">
+      <slot></slot>
+    </div>
   </fieldset>
 </template>
 
@@ -28,4 +30,35 @@ export default {
 .form-section-title
   font-weight: $fw-medium
   font-size: $fs-medium
+
+.form-controls-wrapper
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  row-gap: 10px
+  column-gap: 20px
+
+.cols-9
+  grid-column: 9 span
+.cols-4
+  grid-column: 4 span
+.cols-3
+  grid-column: 3 span
+.cols-2
+  grid-column: 2 span
+.cols-1
+  grid-column: 1 span
+
+@media (max-width: 648px)
+  .form-controls-wrapper
+    grid-template-columns: repeat(8, 1fr)
+
+  .cols-9
+    grid-column: 8 span
+
+@media (max-width: 428px)
+  .form-controls-wrapper
+    grid-template-columns: repeat(4, 1fr)
+
+  .cols-9
+    grid-column: 4 span
 </style>
