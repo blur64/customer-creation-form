@@ -18,6 +18,7 @@ export default {
 
 <style lang="sass" scoped>
 @import "../styles/variables"
+@import "../styles/breakpoints"
 
 .fieldset
   border: 1px solid $border-main
@@ -48,14 +49,14 @@ export default {
 .cols-1
   grid-column: 1 span
 
-@media (max-width: 648px)
+@include tablet
   .form-controls-wrapper
     grid-template-columns: repeat(8, 1fr)
 
   .cols-9
     grid-column: 8 span
 
-@media (max-width: 428px)
+@include mobile
   .form-controls-wrapper
     grid-template-columns: repeat(4, 1fr)
 

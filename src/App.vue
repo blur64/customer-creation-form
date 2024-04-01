@@ -28,6 +28,6 @@ body
   background-color: $background-secondary
 
 .container
-  max-width: 792px
+  max-width: 892px
   margin: 0 auto
 </style>

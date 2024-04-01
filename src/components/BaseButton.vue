@@ -21,6 +21,7 @@ export default {
   cursor: pointer
   padding: 12px 16px
   border-radius: 4px
+  font-size: $fs-small
 
   &:hover
     opacity: 0.8

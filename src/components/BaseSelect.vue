@@ -62,6 +62,7 @@ export default {
   margin-top: 4px
   color: $text-main
   font-weight: $fw-regular
+  font-size: $fs-small
 
   &-with-error
     border: 1px solid $error

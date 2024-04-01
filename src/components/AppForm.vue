@@ -276,6 +276,8 @@ export default {
         if (!isFormValid) {
           e.preventDefault();
           this.setErrorsMap();
+        } else {
+          alert("Клиент успешно создан.");
         }
       });
     },
@@ -298,17 +300,19 @@ export default {
 
 <style lang="sass" scoped>
 @import "../styles/variables"
+@import "../styles/breakpoints"
 
 .form
   margin-bottom: 24px
   display: flex
   flex-direction: column
 
-.form-title
-  font-weight: $fw-light
-  font-size: $fs-big
-  margin-top: 28px
-  margin-left: 14px
+  &-title
+    font-weight: $fw-light
+    font-size: $fs-big
+    margin-top: 16px
+    margin-left: 14px
+    margin-bottom: 4px
 
 .sex-select
   min-width: 60px
@@ -320,7 +324,7 @@ export default {
   margin-top: 24px
   align-self: flex-end
 
-@media(max-width: 428px)
+@include mobile
   .save-button
     align-self: stretch
 </style>
