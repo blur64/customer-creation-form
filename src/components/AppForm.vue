@@ -301,6 +301,8 @@ export default {
 
 .form
   margin-bottom: 24px
+  display: flex
+  flex-direction: column
 
 .form-title
   font-weight: $fw-light
@@ -316,4 +318,9 @@ export default {
 
 .save-button
   margin-top: 24px
+  align-self: flex-end
+
+@media(max-width: 428px)
+  .save-button
+    align-self: stretch
 </style>
