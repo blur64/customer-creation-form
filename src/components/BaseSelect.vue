@@ -13,7 +13,9 @@
         {{ opt.text }}
       </option>
     </select>
-    <div class="select-error" v-if="errors.length">{{ errors.join(". ") }}</div>
+    <div class="select-error" v-if="errors.length">
+      {{ joinedErrors }}
+    </div>
   </div>
 </template>
 
@@ -42,6 +44,11 @@ export default {
         );
       },
       required: true,
+    },
+  },
+  computed: {
+    joinedErrors() {
+      return this.errors.join(". ");
     },
   },
 };

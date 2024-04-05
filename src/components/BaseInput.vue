@@ -9,7 +9,9 @@
       v-bind="$attrs"
       :id="id"
     />
-    <div class="input-error" v-if="errors.length">{{ errors.join(". ") }}</div>
+    <div class="input-error" v-if="errors.length">
+      {{ joinedErrors }}
+    </div>
   </div>
 </template>
 
@@ -33,6 +35,11 @@ export default {
       },
     },
     id: String,
+  },
+  computed: {
+    joinedErrors() {
+      return this.errors.join(". ");
+    },
   },
 };
 </script>
