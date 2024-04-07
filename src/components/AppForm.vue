@@ -56,6 +56,8 @@
         name="phone-number"
         :errors="errorsMap.phoneNumber"
         class="cols-4"
+        maxLength="11"
+        placeholder="7XXXXXXXXXX"
       />
       <base-select
         v-model="main.assignedDoctor"

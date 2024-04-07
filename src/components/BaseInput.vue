@@ -71,6 +71,6 @@ export default {
 
 .input-error
   color: $error
-  font-size: $fs-small
+  font-size: 14px
   margin-top: 4px
 </style>
