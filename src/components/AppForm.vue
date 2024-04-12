@@ -4,7 +4,6 @@
     <form-section :title="'Основная информация'">
       <base-input
         v-model="main.surname"
-        id="surname"
         type="text"
         label="Фамилия"
         name="surname"
@@ -14,7 +13,6 @@
       />
       <base-input
         v-model="main.name"
-        id="name"
         type="text"
         label="Имя"
         name="name"
@@ -24,7 +22,6 @@
       />
       <base-input
         v-model="main.patronymic"
-        id="patronymic"
         type="text"
         label="Отчество"
         name="patronymic"
@@ -32,7 +29,6 @@
       />
       <base-input
         v-model="main.birthDate"
-        id="birth-date"
         type="date"
         label="Дата рождения"
         name="birth-date"
@@ -42,7 +38,6 @@
       />
       <base-select
         v-model="main.sex"
-        id="sex"
         label="Пол"
         name="sex"
         :options="[
@@ -53,7 +48,6 @@
       />
       <base-input
         v-model="main.phoneNumber"
-        id="phone-number"
         type="tel"
         label="Номер телефона"
         name="phone-number"
@@ -65,7 +59,6 @@
       />
       <base-select
         v-model="main.assignedDoctor"
-        id="assigned-doctor"
         label="Лечащий врач"
         name="assigned-doctor"
         :options="[
@@ -77,7 +70,6 @@
       />
       <base-select
         v-model="main.clientsGroup"
-        id="clents-group"
         label="Группа клиентов"
         name="clents-group"
         :options="[
@@ -92,7 +84,6 @@
       />
       <base-input
         v-model="main.isNotSendTexting"
-        id="is-not-send-texting"
         type="checkbox"
         label="Не отправлять СМС"
         name="is-not-send-texting"
@@ -103,7 +94,6 @@
     <form-section :title="'Адрес'">
       <base-input
         v-model="address.city"
-        id="city"
         type="text"
         label="Город"
         name="city"
@@ -113,7 +103,6 @@
       />
       <base-input
         v-model="address.country"
-        id="country"
         type="text"
         label="Страна"
         name="country"
@@ -121,7 +110,6 @@
       />
       <base-input
         v-model="address.region"
-        id="region"
         label="Область"
         name="region"
         type="text"
@@ -129,7 +117,6 @@
       />
       <base-input
         v-model="address.postcode"
-        id="postcode"
         label="Индекс"
         name="postcode"
         type="text"
@@ -137,7 +124,6 @@
       />
       <base-input
         v-model="address.house"
-        id="house"
         label="Дом"
         name="house"
         type="text"
@@ -145,7 +131,6 @@
       />
       <base-input
         v-model="address.street"
-        id="street"
         label="Улица"
         name="street"
         type="text"
@@ -155,7 +140,6 @@
     <form-section :title="'Паспортные данные'">
       <base-select
         v-model="docs.type"
-        id="document-type"
         label="Тип документа"
         name="document-type"
         :options="[
@@ -169,7 +153,6 @@
       />
       <base-input
         v-model="docs.series"
-        id="document-series"
         label="Серия"
         name="document-series"
         type="text"
@@ -177,7 +160,6 @@
       />
       <base-input
         v-model="docs.number"
-        id="document-number"
         label="Номер"
         name="document-number"
         type="text"
@@ -185,7 +167,6 @@
       />
       <base-input
         v-model="docs.issuer"
-        id="document-issuer"
         label="Кем выдан"
         name="document-issuer"
         type="text"
@@ -193,7 +174,6 @@
       />
       <base-input
         v-model="docs.issueDate"
-        id="document-issue-date"
         label="Дата выдачи"
         name="document-issue-date"
         type="date"

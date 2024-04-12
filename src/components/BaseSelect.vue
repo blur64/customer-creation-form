@@ -7,6 +7,7 @@
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
+      :name="name"
       :id="id"
     >
       <option v-for="(opt, idx) of options" :key="idx" :value="opt.value">
@@ -26,9 +27,9 @@ export default {
   name: "BaseInput",
   inheritAttrs: false,
   setup(props) {
-    const { joinedErrors, hasError, labelText } =
+    const { joinedErrors, hasError, labelText, id } =
       useFormControlBaseValues(props);
-    return { joinedErrors, hasError, labelText };
+    return { joinedErrors, hasError, labelText, id };
   },
   props: {
     value: {},
@@ -42,7 +43,7 @@ export default {
         return [];
       },
     },
-    id: String,
+    name: String,
     options: {
       type: Array,
       validator(value) {

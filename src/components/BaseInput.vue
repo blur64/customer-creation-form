@@ -7,6 +7,7 @@
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
+      :name="name"
       :id="id"
     />
     <div class="input-error" v-if="hasError">
@@ -22,9 +23,9 @@ export default {
   name: "BaseInput",
   inheritAttrs: false,
   setup(props) {
-    const { joinedErrors, hasError, labelText } =
+    const { joinedErrors, hasError, labelText, id } =
       useFormControlBaseValues(props);
-    return { joinedErrors, hasError, labelText };
+    return { joinedErrors, hasError, labelText, id };
   },
   props: {
     value: {},
@@ -32,16 +33,13 @@ export default {
     errors: {
       type: Array,
       validator(value) {
-        if (!value) {
-          return true;
-        }
         return value.every((err) => typeof err === "string");
       },
       default() {
         return [];
       },
     },
-    id: String,
+    name: String,
     isRequired: Boolean,
   },
 };
