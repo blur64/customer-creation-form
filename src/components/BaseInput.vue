@@ -1,26 +1,31 @@
 <template>
   <div class="input-wrapper">
-    <label class="input-label" v-if="label" :for="id">{{
-      `${label} ${isRequired ? "*" : ""}`
-    }}</label>
+    <label class="input-label" v-if="label" :for="id">{{ labelText }}</label>
     <input
       class="input"
-      :class="{ 'input-with-error': errors.length }"
+      :class="{ 'input-with-error': hasError }"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
       :id="id"
     />
-    <div class="input-error" v-if="errors.length">
+    <div class="input-error" v-if="hasError">
       {{ joinedErrors }}
     </div>
   </div>
 </template>
 
 <script>
+import useFormControlBaseValues from "../useFormControlBaseValues.js";
+
 export default {
   name: "BaseInput",
   inheritAttrs: false,
+  setup(props) {
+    const { joinedErrors, hasError, labelText } =
+      useFormControlBaseValues(props);
+    return { joinedErrors, hasError, labelText };
+  },
   props: {
     value: {},
     label: String,
@@ -38,11 +43,6 @@ export default {
     },
     id: String,
     isRequired: Boolean,
-  },
-  computed: {
-    joinedErrors() {
-      return this.errors.join(". ");
-    },
   },
 };
 </script>

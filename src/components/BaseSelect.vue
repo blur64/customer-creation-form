@@ -1,11 +1,9 @@
 <template>
   <div class="select-wrapper">
-    <label class="select-label" v-if="label" :for="id">{{
-      `${label} ${isRequired ? "*" : ""}`
-    }}</label>
+    <label class="select-label" v-if="label" :for="id">{{ labelText }}</label>
     <select
       class="select"
-      :class="{ 'select-with-error': errors.length }"
+      :class="{ 'select-with-error': hasError }"
       :value="value"
       @input="$emit('input', $event.target.value)"
       v-bind="$attrs"
@@ -15,16 +13,23 @@
         {{ opt.text }}
       </option>
     </select>
-    <div class="select-error" v-if="errors.length">
+    <div class="select-error" v-if="hasError">
       {{ joinedErrors }}
     </div>
   </div>
 </template>
 
 <script>
+import useFormControlBaseValues from "../useFormControlBaseValues.js";
+
 export default {
   name: "BaseInput",
   inheritAttrs: false,
+  setup(props) {
+    const { joinedErrors, hasError, labelText } =
+      useFormControlBaseValues(props);
+    return { joinedErrors, hasError, labelText };
+  },
   props: {
     value: {},
     label: String,
@@ -48,11 +53,6 @@ export default {
       required: true,
     },
     isRequired: Boolean,
-  },
-  computed: {
-    joinedErrors() {
-      return this.errors.join(". ");
-    },
   },
 };
 </script>
