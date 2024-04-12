@@ -1,6 +1,8 @@
 <template>
   <div class="select-wrapper">
-    <label class="select-label" v-if="label" :for="id">{{ label }}</label>
+    <label class="select-label" v-if="label" :for="id">{{
+      `${label} ${isRequired ? "*" : ""}`
+    }}</label>
     <select
       class="select"
       :class="{ 'select-with-error': errors.length }"
@@ -45,6 +47,7 @@ export default {
       },
       required: true,
     },
+    isRequired: Boolean,
   },
   computed: {
     joinedErrors() {

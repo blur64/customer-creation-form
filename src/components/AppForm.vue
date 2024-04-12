@@ -10,6 +10,7 @@
         name="surname"
         :errors="errorsMap.surname"
         class="cols-4"
+        isRequired
       />
       <base-input
         v-model="main.name"
@@ -19,6 +20,7 @@
         name="name"
         :errors="errorsMap.name"
         class="cols-4"
+        isRequired
       />
       <base-input
         v-model="main.patronymic"
@@ -36,6 +38,7 @@
         name="birth-date"
         :errors="errorsMap.birthDate"
         class="cols-3"
+        isRequired
       />
       <base-select
         v-model="main.sex"
@@ -58,6 +61,7 @@
         class="cols-4"
         maxLength="11"
         placeholder="7XXXXXXXXXX"
+        isRequired
       />
       <base-select
         v-model="main.assignedDoctor"
@@ -84,6 +88,7 @@
         :errors="errorsMap.clientsGroup"
         multiple
         class="cols-4"
+        isRequired
       />
       <base-input
         v-model="main.isNotSendTexting"
@@ -104,6 +109,7 @@
         name="city"
         :errors="errorsMap.city"
         class="cols-4"
+        isRequired
       />
       <base-input
         v-model="address.country"
@@ -159,6 +165,7 @@
         ]"
         :errors="errorsMap.type"
         class="cols-4"
+        isRequired
       />
       <base-input
         v-model="docs.series"
@@ -192,6 +199,7 @@
         type="date"
         :errors="errorsMap.issueDate"
         class="cols-3"
+        isRequired
       />
     </form-section>
     <base-button :text="'Сохранить'" type="submit" class="save-button" />

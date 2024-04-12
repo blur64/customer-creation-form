@@ -1,6 +1,8 @@
 <template>
   <div class="input-wrapper">
-    <label class="input-label" v-if="label" :for="id">{{ label }}</label>
+    <label class="input-label" v-if="label" :for="id">{{
+      `${label} ${isRequired ? "*" : ""}`
+    }}</label>
     <input
       class="input"
       :class="{ 'input-with-error': errors.length }"
@@ -35,6 +37,7 @@ export default {
       },
     },
     id: String,
+    isRequired: Boolean,
   },
   computed: {
     joinedErrors() {
